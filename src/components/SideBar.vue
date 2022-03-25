@@ -1,17 +1,21 @@
 <template>
-	<div>
-		<div class="bar bg-danger"></div>
-	</div>
+    <div>
+        <div class="bar bg-danger">
+            <ul>
+                <li>Mapa de Joinville</li>
+            </ul>
+        </div>
+    </div>
 </template>
 <script>
 export default {
-	name: 'SideBar',
-};
+    name: 'SideBar',
+}
 </script>
 <style scoped>
 .bar {
-	width: 20rem;
-	height: 100vh;
-	/* background-color: black; */
+    width: 100%;
+    height: 100vh;
+    /* background-color: black; */
 }
 </style>
