@@ -2,11 +2,17 @@
 	<div id="app">
 		<div class="row m-0">
 			<div class="col-3 m-0 p-0">
-				<SideBar :districtInfo="districtInfo"></SideBar>
+				<SideBar
+					:districtInfo="districtInfo"
+					@zoomPressed="zoomPressed()"
+				></SideBar>
 			</div>
 			<div class="col-9 m-0 p-0">
 				<div class="row m-0">
-					<Map @sendDistrictInfo="getDistrictInfo"></Map>
+					<Map
+						@sendDistrictInfo="getDistrictInfo"
+						:isZoom="zoom"
+					></Map>
 				</div>
 			</div>
 		</div>
@@ -26,11 +32,15 @@ export default {
 	data() {
 		return {
 			districtInfo: '',
+			zoom: false,
 		};
 	},
 	methods: {
 		getDistrictInfo(value) {
 			this.districtInfo = value;
+		},
+		zoomPressed() {
+			this.zoom = !this.zoom;
 		},
 	},
 };

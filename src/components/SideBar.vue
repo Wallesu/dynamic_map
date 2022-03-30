@@ -9,6 +9,7 @@
 				<li>Densidade: {{ districtInfo.density }} hab/km²</li>
 				<li>Área: {{ districtInfo.area }} km²</li>
 			</ul>
+			<button @click="$emit('zoomPressed')">zoom</button>
 		</div>
 	</div>
 </template>
