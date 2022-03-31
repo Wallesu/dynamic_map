@@ -3,6 +3,7 @@
 		<svg
 			id="svg"
 			class="map_container"
+			:class="{ zoomed: districtClicked == !null && isZoom }"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="10 70 955 1750.83333333"
 			@mousemove="getPositions($event)"
@@ -21,6 +22,11 @@
 					zoomed: districtClicked == i && isZoom,
 				}"
 			></District>
+			<g fill="purple" @click="getInfos($event)">
+				<path
+					d="M1 0 290.13 1186.96 293.88 1175.19 305.16 1167.87 900.68 1750.29 359.06"
+				></path>
+			</g>
 		</svg>
 		<div class="cordinate">
 			{{ cordinate.x != 'NaN' ? cordinate : '' }}
@@ -96,6 +102,8 @@ export default {
 			this.pointerLocation.y = event.y;
 		},
 		getInfos(event) {
+			console.log(event);
+			// console.log(event.getBBox());
 			let g = event.path[1];
 			let name = g.getAttribute('data-name');
 			let population = g.getAttribute('population');
@@ -126,6 +134,7 @@ export default {
 .map_container {
 	/* width: 100%; */
 	height: 100vh;
+	position: relative;
 	/* border: 1px solid red; */
 }
 .cordinate {
@@ -135,4 +144,15 @@ export default {
 /* .bairro-active {
 	fill: #ff004c !important;
 } */
+.zoomed {
+	transform-origin: 0 0px;
+	transform: scale(1.5);
+	transform-origin: 50% 50%;
+	transition: 0.3s;
+	transform-box: fill-box;
+	margin: 20rem;
+	z-index: 1000;
+	position: absolute;
+	/* transform: translate(10rem, 10rem); */
+}
 </style>
